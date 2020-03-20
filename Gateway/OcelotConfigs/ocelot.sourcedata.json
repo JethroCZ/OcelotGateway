@@ -1,0 +1,44 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/sourcedata/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5000
+        }
+      ],
+      "UpstreamPathTemplate": "/sourcedata/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "Priority": 0
+    },
+    {
+      "DownstreamPathTemplate": "/sourcedata/sklad",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5000
+        }
+      ],
+      "UpstreamPathTemplate": "/sourcedata/sklad",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "Priority": 0
+    },
+    {
+      "DownstreamPathTemplate": "/sourcedata/zasoby",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5000
+        }
+      ],
+      "UpstreamPathTemplate": "/sourcedata/zasoby",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "Priority": 0
+    }
+
+  ]
+}
