@@ -12,7 +12,7 @@ namespace SourceData
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static int Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Information()
@@ -20,7 +20,21 @@ namespace SourceData
             .WriteTo.Console()
             .CreateLogger();
 
-            CreateHostBuilder(args).Build().Run();
+            try
+            {
+                Log.Information("Starting host");
+                CreateHostBuilder(args).Build().Run();
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Host terminated unexpectedly");
+                return 1;
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
