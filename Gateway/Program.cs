@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Serilog;
+using Gateway.Aggregates;
 
 namespace Gateway
 {
@@ -33,7 +34,8 @@ namespace Gateway
                 Log.Logger = new LoggerConfiguration().MinimumLevel.Debug().WriteTo.Console().CreateLogger();
             })
             .ConfigureServices(s => {
-                s.AddOcelot();
+                s.AddOcelot()
+                .AddSingletonDefinedAggregator<SkladZasobyAgregator>();
             })
             .ConfigureLogging((hostingContext, logging) =>
             {

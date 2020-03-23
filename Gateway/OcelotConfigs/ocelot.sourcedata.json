@@ -23,8 +23,9 @@
         }
       ],
       "UpstreamPathTemplate": "/sourcedata/sklad",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
-      "Priority": 0
+      "UpstreamHttpMethod": [ "Get" ],
+      "Priority": 1,
+      "Key": "Sklad"
     },
     {
       "DownstreamPathTemplate": "/sourcedata/zasoby",
@@ -36,9 +37,19 @@
         }
       ],
       "UpstreamPathTemplate": "/sourcedata/zasoby",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
-      "Priority": 0
+      "UpstreamHttpMethod": [ "Get" ],
+      "Priority": 1,
+      "Key": "Zasoby"
     }
-
+  ],
+  "Aggregates": [
+    {
+      "ReRouteKeys": [
+        "Sklad",
+        "Zasoby"
+      ],
+      "UpstreamPathTemplate": "/",
+      "Aggregator": "SkladZasobyAgregator"
+    }
   ]
 }
